@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var targetValue = 0
     @State private var sliderValue = 0.0
-    @State private var capacitySlider = 0.5
+    @State private var opacitySlider = 0.5
     @State private var alertPresented = false
     
     var body: some View {
@@ -22,9 +22,9 @@ struct ContentView: View {
                 .padding()
             HStack {
                 Text("1")
-                SliderUIKit(valueSlider: $sliderValue, capacitySlider: capacitySlider)
+                SliderUIKit(valueSlider: $sliderValue, opacitySlider: opacitySlider)
                     .onChange(of: sliderValue) { newValue in
-                        capacitySlider = Double(computeScore()) / 100.0
+                        opacitySlider = Double(computeScore()) / 100.0
                     }
                 Text("100")
             }

@@ -10,7 +10,7 @@ import SwiftUI
 struct SliderUIKit: UIViewRepresentable {
 
     @Binding var valueSlider: Double
-    var capacitySlider: Double
+    var opacitySlider: Double
     
     func makeUIView(context: Context) -> UISlider {
      
@@ -27,7 +27,7 @@ struct SliderUIKit: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.thumbTintColor = UIColor(.red).withAlphaComponent(capacitySlider)
+        uiView.thumbTintColor = UIColor(.red).withAlphaComponent(opacitySlider)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -53,6 +53,6 @@ extension SliderUIKit{
 
 struct SliderUIKit_Previews: PreviewProvider {
     static var previews: some View {
-        SliderUIKit(valueSlider: .constant(50), capacitySlider: 0.5)
+        SliderUIKit(valueSlider: .constant(50), opacitySlider: 0.5)
     }
 }
