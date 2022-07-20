@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SliderUIKit: UIViewRepresentable {
 
-    @Binding var capacitySlider: Double
     @Binding var valueSlider: Double
+    var capacitySlider: Double
     
     func makeUIView(context: Context) -> UISlider {
      
@@ -53,6 +53,6 @@ extension SliderUIKit{
 
 struct SliderUIKit_Previews: PreviewProvider {
     static var previews: some View {
-        SliderUIKit(capacitySlider: .constant(0.5), valueSlider: .constant(50))
+        SliderUIKit(valueSlider: .constant(50), capacitySlider: 0.5)
     }
 }

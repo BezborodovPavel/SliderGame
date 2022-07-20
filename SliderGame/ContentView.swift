@@ -22,7 +22,7 @@ struct ContentView: View {
                 .padding()
             HStack {
                 Text("1")
-                SliderUIKit(capacitySlider: $capacitySlider, valueSlider: $sliderValue)
+                SliderUIKit(valueSlider: $sliderValue, capacitySlider: capacitySlider)
                     .onChange(of: sliderValue) { newValue in
                         capacitySlider = Double(computeScore()) / 100.0
                     }
