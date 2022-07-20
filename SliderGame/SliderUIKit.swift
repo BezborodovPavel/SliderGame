@@ -39,7 +39,7 @@ struct SliderUIKit: UIViewRepresentable {
 extension SliderUIKit{
     
     class Coordinator: NSObject {
-        @Binding var valueSlider: Double
+        @Binding private var valueSlider: Double
         
         init(valueSlider: Binding<Double>) {
             self._valueSlider = valueSlider
@@ -48,10 +48,7 @@ extension SliderUIKit{
         @objc func sliderValueChanged(_ sender: UISlider) {
             valueSlider = Double(sender.value)
         }
-        
     }
-    
-    
 }
 
 struct SliderUIKit_Previews: PreviewProvider {

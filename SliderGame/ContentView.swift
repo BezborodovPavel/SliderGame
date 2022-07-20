@@ -37,24 +37,27 @@ struct ContentView: View {
                 startButtonPress()
             }
         }
+        .onAppear(perform: startButtonPress) // Так при запуске рандомное число устанавливается. Но есть сомнения правильно ли тут это делать.
         .alert("Your score", isPresented: $alertPresented, actions: {}) {
             Text("\(computeScore())")
         }
+        
     }
-    
-    init() {
-        startButtonPress()
+
+//    А вот так не работает, хотя метод и срабатывает, но targetValue остается равным 0 и при зауске приложения всегда начинается с этого числа. Как парильно здесь поступить?
+//    init() {
+//        startButtonPress()
+//    }
+}
+
+extension ContentView {
+    private func startButtonPress(){
+        self.targetValue = Int.random(in: 1...100)
     }
 }
 
 extension ContentView {
-    func startButtonPress(){
-        targetValue = Int.random(in: 1...100)
-    }
-}
-
-extension ContentView {
-    func checkButtonPress(){
+    private func checkButtonPress(){
         alertPresented = true
     }
 }
