@@ -9,9 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var targetValue = 0
+    @State private var targetValue = Int.random(in: 1...100)
     @State private var sliderValue = 0.0
-    @State private var opacitySlider = 0.5
     @State private var alertPresented = false
     
     var body: some View {
@@ -22,10 +21,7 @@ struct ContentView: View {
                 .padding()
             HStack {
                 Text("1")
-                SliderUIKit(valueSlider: $sliderValue, opacitySlider: opacitySlider)
-                    .onChange(of: sliderValue) { newValue in
-                        opacitySlider = Double(computeScore()) / 100.0
-                    }
+                SliderUIKit(valueSlider: $sliderValue, opacitySlider: Double(computeScore()) / 100.0)
                 Text("100")
             }
             .padding()
@@ -37,17 +33,10 @@ struct ContentView: View {
                 startButtonPress()
             }
         }
-        .onAppear(perform: startButtonPress) // Так при запуске рандомное число устанавливается. Но есть сомнения правильно ли тут это делать.
         .alert("Your score", isPresented: $alertPresented, actions: {}) {
             Text("\(computeScore())")
         }
-        
     }
-
-//    А вот так не работает, хотя метод и срабатывает, но targetValue остается равным 0 и при зауске приложения всегда начинается с этого числа. Как парильно здесь поступить?
-//    init() {
-//        startButtonPress()
-//    }
 }
 
 extension ContentView {

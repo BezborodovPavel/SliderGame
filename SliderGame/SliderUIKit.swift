@@ -27,7 +27,7 @@ struct SliderUIKit: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.thumbTintColor = UIColor(.red).withAlphaComponent(opacitySlider)
+        uiView.thumbTintColor = .red.withAlphaComponent(opacitySlider)
     }
     
     func makeCoordinator() -> Coordinator {
